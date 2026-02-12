@@ -11,6 +11,7 @@
             --dark: #15171c;
             --grey: #8d8d8d;
             --light: #f3f4f6;
+            --banner-bg: #ffeef4; /* Light Pink for banner */
         }
 
         body {
@@ -19,11 +20,51 @@
             padding: 0;
             background-color: #fff;
             color: #333;
+            /* Padding top increased to make space for fixed banner if needed, 
+               but here we use relative for smooth flow */
+        }
+
+        /* --- Download App Banner (New) --- */
+        .app-banner {
+            background-color: var(--dark);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .app-text {
+            font-weight: 600;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .store-btn {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+
+        .store-btn:hover {
+            background-color: #d61c5c;
         }
 
         /* --- Header --- */
         header {
-            background-color: var(--dark);
+            background-color: white; /* Changed to white for contrast */
             padding: 15px 20px;
             display: flex;
             align-items: center;
@@ -31,22 +72,25 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .menu-icon {
             font-size: 24px;
-            color: white;
+            color: var(--dark);
             cursor: pointer;
         }
 
         .logo {
-            width: 40px;
+            width: 80px; /* Adjusted width */
             height: 40px;
-            background-image: url('https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_120,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/vman-and-white-cult-text.png');
+            /* Using a dark logo for white background */
+            background-image: url('https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_120,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/vman-and-white-cult-text.png'); 
+            /* Filter to make the white logo dark since header is white now */
+            filter: invert(1); 
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            margin: 0 auto; /* Center logo */
         }
 
         /* --- Main Content --- */
@@ -177,6 +221,18 @@
 </head>
 <body>
 
+    <div class="app-banner">
+        <span class="app-text">Download App</span>
+        <div class="store-buttons">
+            <a href="#" class="store-btn">
+                <span>🤖 Android</span>
+            </a>
+            <a href="#" class="store-btn">
+                <span>🍎 iOS</span>
+            </a>
+        </div>
+    </div>
+
     <header>
         <div class="menu-icon">☰</div>
         <div class="logo"></div>
@@ -266,13 +322,10 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-
-        // Change slide every 3 seconds
         setInterval(nextSlide, 3000);
 
-        // 2. Scroll Animation Script (Fade in when scrolling)
+        // 2. Scroll Animation Script
         const cards = document.querySelectorAll('.gym-card');
-
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -280,10 +333,7 @@
                 }
             });
         }, { threshold: 0.1 });
-
-        cards.forEach(card => {
-            observer.observe(card);
-        });
+        cards.forEach(card => observer.observe(card));
     </script>
 
 </body>
