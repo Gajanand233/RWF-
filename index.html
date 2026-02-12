@@ -3,145 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RWF Service - Noida</title>
+    <title>Gyms in Delhi - Fitness Center</title>
     <style>
         /* --- CSS STYLES --- */
         :root {
-            --primary: #00bcd4; /* Cyan/Water Blue */
-            --dark: #2c3e50;
-            --white: #ffffff;
-            --bg-light: #f0f8ff;
+            --primary: #ff3278; /* Cult Pink color */
+            --dark: #15171c;
+            --grey: #8d8d8d;
+            --light: #f3f4f6;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
-            color: var(--dark);
-            text-align: center;
+            background-color: #fff;
+            color: #333;
         }
 
-        /* --- Header & Animation --- */
+        /* --- Header --- */
         header {
             background-color: var(--dark);
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* The Animated Name */
-        .logo-container {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            /* Gradient Text */
-            background: linear-gradient(90deg, #00bcd4, #ffffff, #00bcd4);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            /* Animation Name */
-            animation: shine 3s linear infinite;
+        .menu-icon {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
         }
 
-        /* Animation Keyframes */
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-image: url('https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_120,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/vman-and-white-cult-text.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto; /* Center logo */
         }
 
-        /* --- Hero Section --- */
-        .hero {
-            padding: 60px 20px;
-            background: linear-gradient(rgba(0, 188, 212, 0.1), rgba(0, 188, 212, 0.1));
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        /* --- Contact Details Cards --- */
+        /* --- Main Content --- */
         .container {
+            padding: 20px;
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        .contact-card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            border-bottom: 4px solid var(--primary);
-        }
-
-        .icon {
-            font-size: 2rem;
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
             margin-bottom: 10px;
-            display: block;
         }
 
-        .label {
-            font-weight: bold;
-            color: #777;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 5px;
         }
 
-        .detail {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--dark);
-            margin: 5px 0;
-            word-wrap: break-word;
-        }
-
-        /* --- Buttons --- */
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin-top: 10px;
-            border-radius: 50px;
+        .know-more {
+            color: var(--primary);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: 0.3s;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 25px;
         }
 
-        .btn-call {
-            background-color: #2ecc71;
+        /* --- Auto Swipe Slider (Animation) --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
             color: white;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+            background: rgba(0,0,0,0.6);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
         }
 
-        .btn-call:hover { background-color: #27ae60; }
-
-        .btn-email {
-            background-color: var(--primary);
-            color: white;
+        /* --- Gym Cards --- */
+        .gym-card {
+            margin-bottom: 35px;
+            /* Scroll Animation start state */
+            opacity: 0; 
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
         }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: #888;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.8rem;
+        .gym-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .gym-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .explore-btn {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .address {
+            font-size: 13px;
+            color: var(--grey);
+            line-height: 1.4;
         }
 
     </style>
@@ -149,44 +178,113 @@
 <body>
 
     <header>
-        <div class="logo-container">RWF</div>
-        <div style="color:white; font-size: 0.9rem; margin-top:5px;">RO Service & Support</div>
-    </header>
-
-    <section class="hero">
-        <h2>Expert Water Purifier Service</h2>
-        <p>Serving Gejha, Sector 93 & All Noida</p>
-        
-        <a href="tel:1234668999" class="btn btn-call">📞 Call Now</a>
-    </section>
+        <div class="menu-icon">☰</div>
+        <div class="logo"></div>
+        <div style="width: 24px;"></div> </header>
 
     <div class="container">
-        <div class="contact-card">
-            <span class="icon">📍</span>
-            <div class="label">Our Location</div>
-            <div class="detail">Gejha, Sector 93</div>
-            <div class="detail" style="font-size: 1rem; color: #666;">Noida, Uttar Pradesh</div>
-            <br>
-            <a href="https://www.google.com/maps/search/?api=1&query=Gejha+Sector+93+Noida" target="_blank" style="color:var(--primary); text-decoration:none;">View on Map &rarr;</a>
+        <h1>Gyms in Delhi</h1>
+        <p class="subtitle">Over the last couple of years, gyms have become the hotspots for fitness enthusiasts. There are many gyms in...</p>
+        <a href="#" class="know-more">Know more</a>
+
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gym 1">
+                <div class="slider-caption">Trending: CrossFit</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Gym 2">
+                <div class="slider-caption">New Opening: South Delhi</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=800&q=80" alt="Gym 3">
+                <div class="slider-caption">Premium Equipment</div>
+            </div>
         </div>
 
-        <div class="contact-card">
-            <span class="icon">📱</span>
-            <div class="label">Mobile Number</div>
-            <div class="detail">1234668999</div>
+        <div class="gym-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80" alt="Gym 1">
+            </div>
+            <div class="card-header">
+                <div class="gym-name">Cult Pitampura</div>
+                <div class="explore-btn">EXPLORE</div>
+            </div>
+            <div class="address">
+                2nd Floor, A 1/17, Prashant Vihar, Sector 14, Rohini, Opp. Pitampura Power House Delhi, Delhi 110085
+            </div>
         </div>
 
-        <div class="contact-card">
-            <span class="icon">✉️</span>
-            <div class="label">Email Support</div>
-            <div class="detail">rwf@support.com</div>
-            <a href="mailto:rwf@support.com" class="btn btn-email" style="margin-top:15px; font-size:0.9rem;">Send Email</a>
+        <div class="gym-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=80" alt="Gym 2">
+            </div>
+            <div class="card-header">
+                <div class="gym-name">Cult Vasant Kunj</div>
+                <div class="explore-btn">EXPLORE</div>
+            </div>
+            <div class="address">
+                3rd floor, Vasanth Square Mall, Vasant Kunj Rd, Pocket 5, Sector B, New Delhi, Delhi 110070
+            </div>
         </div>
+
+        <div class="gym-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80" alt="Gym 3">
+            </div>
+            <div class="card-header">
+                <div class="gym-name">Cult Lajpat Nagar</div>
+                <div class="explore-btn">EXPLORE</div>
+            </div>
+            <div class="address">
+                B-24, Lower Ground Floor, Lajpat Nagar II, Near Metro Station, New Delhi, Delhi 110024
+            </div>
+        </div>
+
+         <div class="gym-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" alt="Gym 4">
+            </div>
+            <div class="card-header">
+                <div class="gym-name">Cult Noida Sec 18</div>
+                <div class="explore-btn">EXPLORE</div>
+            </div>
+            <div class="address">
+                5th Floor, Ocean Plaza, Sector 18 Market, Opp Great India Place, Noida, UP 201301
+            </div>
+        </div>
+
     </div>
 
-    <footer>
-        <p>&copy; 2024 RWF Service Center. <br> Serving Noida Sector 93.</p>
-    </footer>
+    <script>
+        // 1. Automatic Image Slider Script
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 3 seconds
+        setInterval(nextSlide, 3000);
+
+        // 2. Scroll Animation Script (Fade in when scrolling)
+        const cards = document.querySelectorAll('.gym-card');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 
 </body>
 </html>
