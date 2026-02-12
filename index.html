@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gyms in Delhi - Fitness Center</title>
+    <title>ZoneFit - Premium Gyms</title>
     <style>
         /* --- CSS STYLES --- */
         :root {
-            --primary: #ff3278; /* Cult Pink color */
+            --primary: #ff3278; /* ZoneFit Theme Color */
             --dark: #15171c;
             --grey: #8d8d8d;
             --light: #f3f4f6;
-            --banner-bg: #ffeef4; /* Light Pink for banner */
+            --banner-bg: #ffeef4; 
         }
 
         body {
@@ -20,11 +20,9 @@
             padding: 0;
             background-color: #fff;
             color: #333;
-            /* Padding top increased to make space for fixed banner if needed, 
-               but here we use relative for smooth flow */
         }
 
-        /* --- Download App Banner (New) --- */
+        /* --- Download App Banner --- */
         .app-banner {
             background-color: var(--dark);
             color: white;
@@ -56,6 +54,8 @@
             align-items: center;
             gap: 5px;
             transition: 0.2s;
+            cursor: pointer;
+            border: none;
         }
 
         .store-btn:hover {
@@ -64,7 +64,7 @@
 
         /* --- Header --- */
         header {
-            background-color: white; /* Changed to white for contrast */
+            background-color: white; 
             padding: 15px 20px;
             display: flex;
             align-items: center;
@@ -82,12 +82,10 @@
         }
 
         .logo {
-            width: 80px; /* Adjusted width */
+            width: 100px; /* Thoda wide kiya taaki ZoneFit naam fit aaye */
             height: 40px;
-            /* Using a dark logo for white background */
-            background-image: url('https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_120,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/vman-and-white-cult-text.png'); 
-            /* Filter to make the white logo dark since header is white now */
-            filter: invert(1); 
+            /* Aapka ZoneFit wala logo yaha aayega */
+            background-image: url('logo.png'); 
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -122,7 +120,7 @@
             margin-bottom: 25px;
         }
 
-        /* --- Auto Swipe Slider (Animation) --- */
+        /* --- Auto Swipe Slider --- */
         .slider-container {
             position: relative;
             width: 100%;
@@ -165,7 +163,6 @@
         /* --- Gym Cards --- */
         .gym-card {
             margin-bottom: 35px;
-            /* Scroll Animation start state */
             opacity: 0; 
             transform: translateY(20px);
             transition: all 0.6s ease-out;
@@ -222,12 +219,13 @@
 <body>
 
     <div class="app-banner">
-        <span class="app-text">Download App</span>
+        <span class="app-text">Download ZoneFit App</span>
         <div class="store-buttons">
-            <a href="#" class="store-btn">
+            <a href="app.apk" download class="store-btn">
                 <span>🤖 Android</span>
             </a>
-            <a href="#" class="store-btn">
+            
+            <a href="#" class="store-btn" onclick="alert('iOS Version Coming Soon!')">
                 <span>🍎 iOS</span>
             </a>
         </div>
@@ -235,12 +233,12 @@
 
     <header>
         <div class="menu-icon">☰</div>
-        <div class="logo"></div>
-        <div style="width: 24px;"></div> </header>
+        <div class="logo"></div> <div style="width: 24px;"></div>
+    </header>
 
     <div class="container">
-        <h1>Gyms in Delhi</h1>
-        <p class="subtitle">Over the last couple of years, gyms have become the hotspots for fitness enthusiasts. There are many gyms in...</p>
+        <h1>ZoneFit Centers</h1>
+        <p class="subtitle">Join the revolution. ZoneFit provides world-class equipment and training across the city.</p>
         <a href="#" class="know-more">Know more</a>
 
         <div class="slider-container">
@@ -263,7 +261,7 @@
                 <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80" alt="Gym 1">
             </div>
             <div class="card-header">
-                <div class="gym-name">Cult Pitampura</div>
+                <div class="gym-name">ZoneFit Pitampura</div>
                 <div class="explore-btn">EXPLORE</div>
             </div>
             <div class="address">
@@ -276,7 +274,7 @@
                 <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=80" alt="Gym 2">
             </div>
             <div class="card-header">
-                <div class="gym-name">Cult Vasant Kunj</div>
+                <div class="gym-name">ZoneFit Vasant Kunj</div>
                 <div class="explore-btn">EXPLORE</div>
             </div>
             <div class="address">
@@ -289,7 +287,7 @@
                 <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80" alt="Gym 3">
             </div>
             <div class="card-header">
-                <div class="gym-name">Cult Lajpat Nagar</div>
+                <div class="gym-name">ZoneFit Lajpat Nagar</div>
                 <div class="explore-btn">EXPLORE</div>
             </div>
             <div class="address">
@@ -302,7 +300,7 @@
                 <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" alt="Gym 4">
             </div>
             <div class="card-header">
-                <div class="gym-name">Cult Noida Sec 18</div>
+                <div class="gym-name">ZoneFit Noida Sec 18</div>
                 <div class="explore-btn">EXPLORE</div>
             </div>
             <div class="address">
@@ -313,10 +311,9 @@
     </div>
 
     <script>
-        // 1. Automatic Image Slider Script
+        // Automatic Slider
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
-
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
@@ -324,7 +321,7 @@
         }
         setInterval(nextSlide, 3000);
 
-        // 2. Scroll Animation Script
+        // Scroll Animation
         const cards = document.querySelectorAll('.gym-card');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -338,3 +335,4 @@
 
 </body>
 </html>
+
